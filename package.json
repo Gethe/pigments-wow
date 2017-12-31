@@ -1,0 +1,25 @@
+{
+  "name": "pigments-wow",
+  "version": "0.0.0",
+  "description": "An extention for Pigments adding support for World of Warcraft color functions",
+  "keywords": [
+      "colors",
+      "lua",
+      "wow"
+  ],
+  "repository": "https://github.com/Gethe/pigments-wow",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+      "pigments": ">=0.40.2"
+  },
+  "providedServices": {
+    "pigments.expressions.colors": {
+      "versions": {
+        "1.0.0": "provideColorExpressions"
+      }
+    }
+  }
+}
