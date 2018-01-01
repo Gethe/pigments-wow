@@ -25,12 +25,14 @@ texture:SetGradient("VERTICAL", 0, 0, 0, 1, 1, 1)
 texture:SetGradient("VERTICAL", 1, 1, 1, 0, 0, 0)
 
 -- font methods
-local font = frame:CreateTexture()
-font:SetTextColor(1, 1, 0)
-font:SetTextColor(1, 1, 0, 0.5)
+local fontStr = frame:CreateFontString()
+fontStr:SetTextColor(1, 1, 0)
+fontStr:SetTextColor(1, 1, 0, 0.5)
 
 
 --[[ HEX Colors ]]--
 
 -- color string
 local colorStr = "ffabd473"
+fontStr:SetFormattedText("This is |cffabcdefColored text|r!!!")
+fontStr:SetFormattedText("This is |c77abcdefsome |cfffedcbamore |c%scolored text|r", colorStr)

@@ -61,9 +61,15 @@ for (let func in decimalColorFunctions) {
   })
 }
 
+let escS = '\\|c'
+let escE = '\\|r'
+
+let strS = '(?:' + quote + '|' + escS + ')?'
+let strE = '(?:(?=' + escS + ')|' + escE + '|' + quote + ')?'
+
 expressions.push({
   name: 'wow:argb_string',
-  regexpString: quote + '([\\da-fA-F]{8})' + quote,
+  regexpString: strS + '([\\da-fA-F]{8})[\\%\\s\\w]*' + strE,
   scopes: ['lua'],
   handle: function (match, expression, context) {
     console.log(this, match, expression)
