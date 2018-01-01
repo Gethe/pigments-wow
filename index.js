@@ -4,6 +4,7 @@ let int = '\\d+'
 let decimal = '\\.' + int
 let float = '(?:' + int + decimal + '|' + int + '|' + decimal + ')'
 
+let quote = '[\'"]'
 let comma = '\\s*,\\s*'
 let commaMaybe = '\\s*,?\\s*'
 let ps = '\\(\\s*'
@@ -21,7 +22,7 @@ let decimalColorArgs = ps +
 pe
 
 function decimalColorHandler (match, expression, context) {
-  console.log('wow:create_color', this, match, expression)
+  console.log(this, match, expression)
   this.red = context.readFloat(match[1]) * 255
   this.green = context.readFloat(match[2]) * 255
   this.blue = context.readFloat(match[3]) * 255
@@ -59,6 +60,16 @@ for (let func in decimalColorFunctions) {
     handle: decimalColorHandler
   })
 }
+
+expressions.push({
+  name: 'wow:argb_string',
+  regexpString: quote + '([\\da-fA-F]{8})' + quote,
+  scopes: ['lua'],
+  handle: function (match, expression, context) {
+    console.log(this, match, expression)
+    this.hexARGB = match[1]
+  }
+})
 
 export default {
 

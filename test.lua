@@ -1,4 +1,6 @@
--- Color object
+--[[ Decimal Colors ]]--
+
+-- color object methods
 local color = _G.CreateColor(0, 0, 1, 1)
 color:SetRGB(1, 0, 0)
 color:SetRGBA(1, 0, 0, 0.5)
@@ -26,3 +28,9 @@ texture:SetGradient("VERTICAL", 1, 1, 1, 0, 0, 0)
 local font = frame:CreateTexture()
 font:SetTextColor(1, 1, 0)
 font:SetTextColor(1, 1, 0, 0.5)
+
+
+--[[ HEX Colors ]]--
+
+-- color string
+local colorStr = "ffabd473"
