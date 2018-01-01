@@ -1,7 +1,7 @@
 {
   "name": "pigments-wow",
   "version": "0.0.0",
-  "description": "An extention for Pigments adding support for World of Warcraft color functions",
+  "description": "An extension for Pigments adding support for World of Warcraft color functions",
   "keywords": [
       "colors",
       "lua",
