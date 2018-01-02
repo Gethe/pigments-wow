@@ -61,15 +61,24 @@ for (let func in decimalColorFunctions) {
   })
 }
 
+let hex = '[\\da-fA-F]'
 let escS = '\\|c'
 let escE = '\\|r'
 
-let strS = '(?:' + quote + '|' + escS + ')?'
-let strE = '(?:(?=' + escS + ')|' + escE + '|' + quote + ')?'
-
 expressions.push({
   name: 'wow:argb_string',
-  regexpString: strS + '([\\da-fA-F]{8})[\\%\\s\\w]*' + strE,
+  regexpString: quote + '(' + hex + '{8})' + quote,
+  scopes: ['lua'],
+  handle: function (match, expression, context) {
+    console.log(this, match, expression)
+    this.hexARGB = match[1]
+  }
+})
+
+// \|c([\da-fA-F]{8}).*?(?:(?=\|c)|\|r)
+expressions.push({
+  name: 'wow:embedded_argb_string',
+  regexpString: '\\|c([\\da-fA-F]{8}).*?(?:(?=\\|c)|\\|r)', // escS + '(' + hex + '{8}).*?(?:(?=' + escS + ')|' + escE + ')',
   scopes: ['lua'],
   handle: function (match, expression, context) {
     console.log(this, match, expression)

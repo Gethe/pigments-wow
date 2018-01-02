@@ -33,6 +33,6 @@ fontStr:SetTextColor(1, 1, 0, 0.5)
 --[[ HEX Colors ]]--
 
 -- color string
-local colorStr = "ffabd473"
-fontStr:SetFormattedText("This is |cffabcdefColored text|r!!!")
+local colorStr, notInt = "ffabd473", 12345678
+fontStr:SetFormattedText("This is |cffabcdefColored text|r!!! %d", notInt)
 fontStr:SetFormattedText("This is |c77abcdefsome |cfffedcbamore |c%scolored text|r", colorStr)
